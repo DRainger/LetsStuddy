@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">LestStuddy</string>
+
+    <!-- Login & Register -->
+    <string name="title_login">Welcome Back</string>
+    <string name="title_register">Create Account</string>
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_email">Email Address</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="hint_phone">Phone Number</string>
+    <string name="btn_login">Login</string>
+    <string name="btn_register">Register</string>
+    <string name="msg_no_account">Don\'t have an account? Register</string>
+    <string name="msg_have_account">Already have an account? Login</string>
+
+    <!-- Room List -->
+    <string name="title_rooms">Available Rooms</string>
+    <string name="hint_search_rooms">Search rooms...</string>
+    <string name="content_desc_mic">Voice Search</string>
+    <string name="content_desc_profile">View Profile</string>
+    <string name="msg_empty_rooms">No study rooms found matching your search.</string>
+    <string name="room_capacity">Capacity: %1$d people</string>
+    <string name="status_available">Available</string>
+    <string name="status_unavailable">Booked</string>
+    <string name="btn_view_details">View Details</string>
+
+    <!-- Profile -->
+    <string name="title_profile">Your Profile</string>
+    <string name="btn_save_profile">Save Changes</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_delete_account">Delete Account</string>
 </resources>
