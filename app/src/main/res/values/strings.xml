@@ -30,4 +30,9 @@
     <string name="btn_save_profile">Save Changes</string>
     <string name="btn_logout">Logout</string>
     <string name="btn_delete_account">Delete Account</string>
+
+    <!-- Room Details -->
+    <string name="title_room_details">Room Details</string>
+    <string name="btn_reserve">Reserve Room</string>
+    <string name="btn_back">Back</string>
 </resources>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/roomListFragment">
+
+    <fragment
+        android:id="@+id/roomListFragment"
+        android:name="com.leststuddy.Roons.ui.RoomListFragment"
+        android:label="Study Rooms"
+        tools:layout="@layout/fragment_room_list">
+        <action
+            android:id="@+id/action_roomListFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_roomListFragment_to_roomDetailsFragment"
+            app:destination="@id/roomDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.leststuddy.Roons.ui.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/roomDetailsFragment"
+        android:name="com.leststuddy.Roons.ui.RoomDetailsFragment"
+        android:label="Room Details"
+        tools:layout="@layout/fragment_room_details" />
+</navigation>
