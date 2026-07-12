@@ -35,4 +35,18 @@
     <string name="title_room_details">Room Details</string>
     <string name="btn_reserve">Reserve Room</string>
     <string name="btn_back">Back</string>
+
+    <!-- Errors & Validation -->
+    <string name="error_invalid_email">Invalid email format</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="error_password_short">Password must be at least 6 characters</string>
+    <string name="error_passwords_dont_match">Passwords do not match</string>
+    <string name="error_name_required">Full name is required</string>
+    <string name="error_email_exists">Email already registered</string>
+    <string name="success_registration">Registration successful</string>
+    <string name="error_registration_failed">Registration failed</string>
+    <string name="error_invalid_credentials">Invalid email or password</string>
+    <string name="error_login_failed">Login failed</string>
+    <string name="error_unexpected">An unexpected error occurred</string>
 </resources>
