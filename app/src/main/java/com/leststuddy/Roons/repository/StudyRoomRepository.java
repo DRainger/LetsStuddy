@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import android.os.Handler;
+import android.os.Looper;
 
 public class StudyRoomRepository {
     private final StudyRoomDao studyRoomDao;
@@ -28,6 +30,13 @@ public class StudyRoomRepository {
 
     public void insert(StudyRoom room) {
         executorService.execute(() -> studyRoomDao.insert(room));
+    }
+
+    public void getRoomById(int id, UserRepository.ResultCallback<StudyRoom> callback) {
+        executorService.execute(() -> {
+            StudyRoom room = studyRoomDao.getRoomById(id);
+            new Handler(Looper.getMainLooper()).post(() -> callback.onResult(room));
+        });
     }
 
     public void insertInitialData() {

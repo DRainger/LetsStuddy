@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_roomListFragment_to_roomDetailsFragment"
             app:destination="@id/roomDetailsFragment" />
+        <action
+            android:id="@+id/action_roomListFragment_to_reservationListFragment"
+            app:destination="@id/reservationListFragment" />
     </fragment>
 
     <fragment
@@ -32,5 +35,37 @@
         <argument
             android:name="roomId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_roomDetailsFragment_to_reservationFormFragment"
+            app:destination="@id/reservationFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reservationFormFragment"
+        android:name="com.leststuddy.Roons.ui.ReservationFormFragment"
+        android:label="Reservation Form"
+        tools:layout="@layout/fragment_reservation_form">
+        <argument
+            android:name="roomId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="reservationId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_reservationFormFragment_to_reservationListFragment"
+            app:destination="@id/reservationListFragment"
+            app:popUpTo="@id/roomListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reservationListFragment"
+        android:name="com.leststuddy.Roons.ui.ReservationListFragment"
+        android:label="My Reservations"
+        tools:layout="@layout/fragment_reservation_list">
+        <action
+            android:id="@+id/action_reservationListFragment_to_reservationFormFragment"
+            app:destination="@id/reservationFormFragment" />
     </fragment>
 </navigation>

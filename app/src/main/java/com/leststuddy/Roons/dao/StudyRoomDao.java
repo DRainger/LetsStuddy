@@ -21,4 +21,7 @@ public interface StudyRoomDao {
 
     @Query("SELECT COUNT(*) FROM study_rooms")
     int getCount();
+
+    @Query("SELECT * FROM study_rooms WHERE id = :id LIMIT 1")
+    StudyRoom getRoomById(int id);
 }

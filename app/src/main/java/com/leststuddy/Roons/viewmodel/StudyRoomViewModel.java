@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import com.leststuddy.Roons.model.StudyRoom;
 import com.leststuddy.Roons.repository.StudyRoomRepository;
+import com.leststuddy.Roons.repository.UserRepository;
 import java.util.List;
 
 public class StudyRoomViewModel extends AndroidViewModel {
@@ -24,5 +25,9 @@ public class StudyRoomViewModel extends AndroidViewModel {
 
     public void insertInitialData() {
         repository.insertInitialData();
+    }
+
+    public void getRoomById(int id, UserRepository.ResultCallback<StudyRoom> callback) {
+        repository.getRoomById(id, callback);
     }
 }

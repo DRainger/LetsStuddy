@@ -38,6 +38,10 @@ public class RoomListFragment extends Fragment {
         binding.buttonProfile.setOnClickListener(v -> 
             Navigation.findNavController(v).navigate(R.id.action_roomListFragment_to_profileFragment)
         );
+
+        binding.buttonReservations.setOnClickListener(v -> 
+            Navigation.findNavController(v).navigate(R.id.action_roomListFragment_to_reservationListFragment)
+        );
     }
 
     private void setupRecyclerView() {
