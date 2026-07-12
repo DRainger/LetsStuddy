@@ -22,5 +22,6 @@ public class AuthActivity extends AppCompatActivity {
 
         binding = ActivityAuthBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
     }
 }
