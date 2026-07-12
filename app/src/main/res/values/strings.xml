@@ -84,4 +84,10 @@
     <string name="btn_update">Update</string>
     <string name="title_reservations">My Reservations</string>
     <string name="btn_view_my_reservations">My Reservations</string>
+
+    <!-- Voice Search -->
+    <string name="msg_speak_now">Speak now...</string>
+    <string name="error_voice_search_unavailable">Voice search is not supported on this device</string>
+    <string name="error_no_speech_detected">No speech was detected. Please try again.</string>
+    <string name="error_voice_search_cancelled">Voice search was cancelled</string>
 </resources>

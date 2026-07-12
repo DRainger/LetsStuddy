@@ -1,13 +1,20 @@
 package com.leststuddy.Roons.ui;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.leststuddy.Roons.R;
 import com.leststuddy.Roons.databinding.FragmentRoomListBinding;
 
@@ -18,10 +25,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.leststuddy.Roons.ui.adapter.StudyRoomAdapter;
 import com.leststuddy.Roons.viewmodel.StudyRoomViewModel;
 
+import java.util.ArrayList;
+
 public class RoomListFragment extends Fragment {
     private FragmentRoomListBinding binding;
     private StudyRoomViewModel viewModel;
     private StudyRoomAdapter adapter;
+
+    private final ActivityResultLauncher<Intent> voiceSearchLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
+                    ArrayList<String> results = result.getData().getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    if (results != null && !results.isEmpty()) {
+                        String query = results.get(0);
+                        binding.editSearch.setText(query);
+                    } else {
+                        Snackbar.make(binding.getRoot(), R.string.error_no_speech_detected, Snackbar.LENGTH_SHORT).show();
+                    }
+                } else if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                    Snackbar.make(binding.getRoot(), R.string.error_voice_search_cancelled, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+    );
 
     @Nullable
     @Override
@@ -45,6 +71,20 @@ public class RoomListFragment extends Fragment {
         binding.buttonReservations.setOnClickListener(v -> 
             Navigation.findNavController(v).navigate(R.id.action_roomListFragment_to_reservationListFragment)
         );
+
+        binding.buttonMic.setOnClickListener(v -> startVoiceSearch());
+    }
+
+    private void startVoiceSearch() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.msg_speak_now));
+
+        try {
+            voiceSearchLauncher.launch(intent);
+        } catch (Exception e) {
+            Snackbar.make(binding.getRoot(), R.string.error_voice_search_unavailable, Snackbar.LENGTH_SHORT).show();
+        }
     }
 
     private void setupRecyclerView() {
