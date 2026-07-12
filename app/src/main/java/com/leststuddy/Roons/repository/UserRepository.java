@@ -61,4 +61,26 @@ public class UserRepository {
             mainHandler.post(() -> callback.onResult(user));
         });
     }
+
+    public void update(User user, ResultCallback<Boolean> callback) {
+        executorService.execute(() -> {
+            try {
+                userDao.update(user);
+                mainHandler.post(() -> callback.onResult(true));
+            } catch (Exception e) {
+                mainHandler.post(() -> callback.onResult(false));
+            }
+        });
+    }
+
+    public void delete(User user, ResultCallback<Boolean> callback) {
+        executorService.execute(() -> {
+            try {
+                userDao.delete(user);
+                mainHandler.post(() -> callback.onResult(true));
+            } catch (Exception e) {
+                mainHandler.post(() -> callback.onResult(false));
+            }
+        });
+    }
 }

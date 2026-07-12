@@ -20,4 +20,10 @@ public interface UserDao {
 
     @Query("SELECT * FROM users")
     List<User> getAllUsers();
+
+    @Update
+    void update(User user);
+
+    @Delete
+    void delete(User user);
 }

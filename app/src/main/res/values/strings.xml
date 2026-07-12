@@ -49,4 +49,18 @@
     <string name="error_invalid_credentials">Invalid email or password</string>
     <string name="error_login_failed">Login failed</string>
     <string name="error_unexpected">An unexpected error occurred</string>
+
+    <!-- Profile Actions -->
+    <string name="success_profile_updated">Profile updated successfully</string>
+    <string name="error_profile_update_failed">Profile update failed</string>
+    <string name="error_user_not_found">User not found</string>
+    <string name="error_invalid_session">Invalid session. Please login again.</string>
+    <string name="dialog_logout_title">Logout</string>
+    <string name="dialog_logout_msg">Are you sure you want to logout?</string>
+    <string name="dialog_delete_account_title">Delete Account</string>
+    <string name="dialog_delete_account_msg">This action permanently removes your account and all related data. Are you sure?</string>
+    <string name="success_account_deleted">Account deleted successfully</string>
+    <string name="error_account_deletion_failed">Account deletion failed</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_delete">Delete</string>
 </resources>
