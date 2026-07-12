@@ -24,6 +24,16 @@ public class RoomDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        int roomId = -1;
+        if (getArguments() != null) {
+            roomId = getArguments().getInt("roomId", -1);
+        }
+
+        // For now, just display the ID if available to confirm navigation
+        if (roomId != -1) {
+            binding.textRoomName.setText("Room ID: " + roomId);
+        }
+
         binding.buttonBack.setOnClickListener(v -> 
             Navigation.findNavController(v).popBackStack()
         );

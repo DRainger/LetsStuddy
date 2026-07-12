@@ -28,5 +28,9 @@
         android:id="@+id/roomDetailsFragment"
         android:name="com.leststuddy.Roons.ui.RoomDetailsFragment"
         android:label="Room Details"
-        tools:layout="@layout/fragment_room_details" />
+        tools:layout="@layout/fragment_room_details">
+        <argument
+            android:name="roomId"
+            app:argType="integer" />
+    </fragment>
 </navigation>
