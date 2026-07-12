@@ -39,6 +39,10 @@ public class StudyRoomRepository {
         });
     }
 
+    public LiveData<List<StudyRoom>> searchRooms(String query) {
+        return studyRoomDao.searchRooms(query);
+    }
+
     public void insertInitialData() {
         executorService.execute(() -> {
             if (studyRoomDao.getCount() == 0) {

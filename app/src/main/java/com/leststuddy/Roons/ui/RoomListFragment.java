@@ -11,6 +11,8 @@ import androidx.navigation.Navigation;
 import com.leststuddy.Roons.R;
 import com.leststuddy.Roons.databinding.FragmentRoomListBinding;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.leststuddy.Roons.ui.adapter.StudyRoomAdapter;
@@ -34,6 +36,7 @@ public class RoomListFragment extends Fragment {
 
         setupRecyclerView();
         setupViewModel();
+        setupSearch();
 
         binding.buttonProfile.setOnClickListener(v -> 
             Navigation.findNavController(v).navigate(R.id.action_roomListFragment_to_profileFragment)
@@ -58,7 +61,7 @@ public class RoomListFragment extends Fragment {
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(StudyRoomViewModel.class);
         viewModel.insertInitialData();
-        viewModel.getAllRooms().observe(getViewLifecycleOwner(), rooms -> {
+        viewModel.getFilteredRooms().observe(getViewLifecycleOwner(), rooms -> {
             if (rooms == null || rooms.isEmpty()) {
                 binding.recyclerRooms.setVisibility(View.GONE);
                 binding.textEmpty.setVisibility(View.VISIBLE);
@@ -67,6 +70,21 @@ public class RoomListFragment extends Fragment {
                 binding.textEmpty.setVisibility(View.GONE);
                 adapter.submitList(rooms);
             }
+        });
+    }
+
+    private void setupSearch() {
+        binding.editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                viewModel.setSearchQuery(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
     }
 

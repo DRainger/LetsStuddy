@@ -24,4 +24,7 @@ public interface StudyRoomDao {
 
     @Query("SELECT * FROM study_rooms WHERE id = :id LIMIT 1")
     StudyRoom getRoomById(int id);
+
+    @Query("SELECT * FROM study_rooms WHERE name LIKE '%' || :query || '%' OR building LIKE '%' || :query || '%'")
+    LiveData<List<StudyRoom>> searchRooms(String query);
 }
